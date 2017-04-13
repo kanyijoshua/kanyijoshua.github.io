@@ -2,8 +2,32 @@
 <html>
 <head>
 	<title>kanyi joshua</title>
+	<link rel="stylesheet" href="boot.min.css">
 </head>
 <body>
-<p1 >wellcome to my site</p1>
+<nav class="navbar navbar-default">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="" href="info.html">kanyi information</a>
+		</div>
+	</div>
+</nav>
+<div class="container">
+	<div class="jumbotron">
+		<h2 class="text-center">search for any thing</h2>
+		<form id="searchForm">
+			<input type="text" class="form-control" id="searchText" placeholder="seach ino..." >
+		</form>
+	</div>
+</div>
+<div class="container">
+	<div id="movies" class="row"></div>
+</div>
+<script src="jquery-3.2.1.min.js"></script>
+<script src="axios.min.js"></script>
+<script src="main.js"></script>
 </body>
+<footer>
+	<h1>proudly powered by kanyi</h1>
+</footer>
 </html>
