@@ -9,25 +9,18 @@
 <nav class="navbar navbar-default">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar brand" href="info.html">kanyi information</a>
+			<a class="varbar brand" href="index.html">kanyi information</a>
 		</div>
 	</div>
 </nav>
 <div class="container">
-	<div class="jumbotron">
-		<h2 class="text-center">search for any thing</h2>
-		<form id="searchForm">
-			<input type="text" class="form-control" id="searchText" placeholder="search here..." >
-		</form>
-	</div>
-</div>
-<div class="container">
-	<div id="movies" class="row"></div>
+	<div id="movie" class="well"></div>
 </div>
 <script src="jquery-3.2.1.min.js"></script>
 <script src="axios.min.js"></script>
-<script src="main.js">
-	getMovies()
+<script src="main.js"></script>
+<script>
+	getMovies();
 </script>
 </body>
 <footer>
