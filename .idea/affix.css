@@ -1,0 +1,8 @@
+#myNav.affix-top{
+    position: static;
+    width: 100%;
+}
+#myNav.affix-bottom{
+    position: fixed;
+    width: 100%;
+}

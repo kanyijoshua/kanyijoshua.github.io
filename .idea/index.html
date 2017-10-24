@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="kanyi">
+<head>
+    <meta charset="UTF-8">
+    <title>wests</title>
+    <script src="angular.min.js"></script>
+    <script src="angular.js"></script>
+    <script src="jquery-3.1.1.js"></script>
+    <script src="bootstrap.js"></script>
+    <link rel="stylesheet" href="bootstrap.css">
+
+</head>
+<body ng-controller="west">
+<nav class="navbar navbar-inverse " id="myNav" >
+    <div class="navbar-header">
+        <a href="#" class="navbar-brand">kanyi joshua</a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse" id="mainNavBar">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#!/two">home</a> </li>
+            <li><a href="#!/one">adventure</a> </li>
+            <li><a href="#!/contacts">articles</a> </li>
+            <li><a href="#">contact</a> </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">family <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#"> photos</a></li>
+                    <li><a href="#">friends</a></li>
+                    <li><a href="#">links</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">social media</a> </li>
+        </ul>
+    </div>
+</nav>
+<ng-view>one</ng-view>
+<ul>
+    <li ng-repeat="pics in date">"{{pics.names}}"</li>
+</ul>
+<footer class="modal-footer" style="background-color: #337ab7">
+    <h2>proudly powered by kanyi</h2>
+</footer>
+</body>
+<script>
+    var west=angular.module('kanyi',["ngRoute"])
+        .factory('kanfact',function () {
+            var factory={};
+            var usernames=['kanyi','joshua','west'];
+            factory.users=function () {
+                return usernames
+            };
+            return factory
+        })
+        .controller('west',function ($scope, kanfact) {
+            $scope.name='what is not happening';
+            $scope.date=[{
+                pic:'./New folder/pexels-photo-206531.jpeg',
+                names:'kanyi'
+        },
+                {
+                    pic:'./New folder/pexels-photo-206531.jpeg',
+                    names:'kany'}];
+            $scope.users=kanfact.users()
+        }).config(function ($routeProvider) {
+            $routeProvider.when('/one',({
+                templateUrl:"adventure.html",
+                controller:"west"
+            })).when('/two',({
+                templateUrl:"two.html",
+                controller:"west"
+            })).when('/',({
+                templateUrl:"one.html",
+                controller:"west"
+            })).when('/contacts',({
+                templateUrl:"parallax.html",
+                controller:"west"
+            }))
+                .otherwise({redirectTo:'/'})
+        });
+</script>
+</html>
