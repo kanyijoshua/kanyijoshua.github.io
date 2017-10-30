@@ -41,9 +41,6 @@
     </div>
 </nav>
 <ng-view>one</ng-view>
-<ul>
-    <li ng-repeat="pics in date">"{{pics.names}}"</li>
-</ul>
 <footer class="modal-footer" style="background-color: #337ab7">
     <h2>proudly powered by kanyi</h2>
 </footer>
@@ -60,21 +57,56 @@
         })
         .controller('west',function ($scope, kanfact) {
             $scope.name='what is not happening';
-            $scope.date=[{
-                pic:'./New folder/pexels-photo-206531.jpeg',
-                names:'kanyi'
-        },
-                {
-                    pic:'./New folder/pexels-photo-206531.jpeg',
-                    names:'kany'}];
             $scope.users=kanfact.users()
-        }).config(function ($routeProvider) {
+        }).controller('two',function ($scope,$http) {
+            var comm=jQuery('#cmts');
+            var user=jQuery('#names');
+            var list=jQuery('#allcomment');
+            $scope.all=[];
+            $http.get('https://mysite-496ae.firebaseio.com/comments.json').then(function(res) {
+                return res;
+            }).then(function (res) {
+                var xx=res.data;
+                for (var ins in xx){
+                    $scope.all.push(xx[ins]);
+                    console.log($scope.all)
+
+                }
+            });
+            $(function () {
+                $.ajax({
+                    type:'GET',
+                    url:'https://mysite-496ae.firebaseio.com/comments.json',
+                    success:function (res) {
+                        $.each(res, function (i, com) {
+                            list.append('<li class="list-group-item" style="background-color: #c9c710"><strong>'+com.users+'</strong><br/>'+com.commnt+'</li>')
+                        })
+                    }
+                })
+            });
+
+            $scope.post=function (username,commen) {
+                if (!username||!commen){
+                    return username+commen
+                }
+                var arts={
+                    users:username,
+                    commnt:commen
+                };
+                console.log(arts);
+                $scope.all=arts;
+                $http.post('https://mysite-496ae.firebaseio.com/comments.json', JSON.stringify(arts)).then(function (data) {
+                    return data
+                });
+            };
+        })
+        .config(function ($routeProvider) {
             $routeProvider.when('/one',({
                 templateUrl:"adventure.html",
                 controller:"west"
             })).when('/two',({
                 templateUrl:"two.html",
-                controller:"west"
+                controller:"two"
             })).when('/',({
                 templateUrl:"one.html",
                 controller:"west"

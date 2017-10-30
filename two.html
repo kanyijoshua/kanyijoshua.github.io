@@ -2,7 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>two</title>
+    <title>two</title><!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>two</title>
+        <link rel="stylesheet" href="bootstrap.css">
+        <script src="bootstrap.js"></script>
+        <script src="jquery-3.1.1.js"></script>
+    </head>
+<body>
+<marquee ><h3 class="jumbotron" style="background-image: url('./images/pexels-photo-445109.jpeg')">please leave a comment about the site</h3></marquee>
+<form class="form-inline well" name="comments">
+    <label>userame: <input class="input-group" id="names" name="user" type="text" ng-model="username" required></label><br/>
+    <label>comment:<input type="text" class="input-lg" id="cmts" name="commnt" ng-model="comment" required></label><br/>
+    <button type="submit" class="btn btn-success" data-ng-click="post(username,comment)">comment</button>
+</form>
+<h4 class="list-group-item-heading">
+    comments by other users
+</h4><hr/>
+<ul id="allcomment">
+</ul>
+</body>
+</html>
     <link rel="stylesheet" href="bootstrap.css">
     <script src="bootstrap.js"></script>
     <script src="jquery-3.1.1.js"></script>
